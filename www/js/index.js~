@@ -1,0 +1,69 @@
+var app = {
+    // Application Constructor
+    initialize: function() {
+        this.bindEvents();
+        this.testZone = {};
+    },
+
+    bindEvents: function() {
+        document.addEventListener("deviceready", this.onDeviceReady, false);
+    },
+
+    onDeviceReady: function() {
+        console.log("Ready");
+        app.testZone = document.getElementById("test-zone");
+     	//app.addContact();
+     	//app.findContacts("si");
+     	app.findContacts("tuts");
+    },
+    
+    addContact: function() {
+    	// create
+        var contact = navigator.contacts.create();
+        contact.displayName = "Tuts+";
+        contact.nickname = "Tuts+";       //specify both to support all devices
+        var name = new ContactName();
+        name.givenName = "Tuts";
+        name.familyName = "Plus";
+        contact.name = name;
+
+        // save
+        contact.save(app.onSaveSuccess,app.onSaveError);
+    },
+    
+    findContacts: function(string) {
+        var options = new ContactFindOptions();
+        options.filter=string;          // empty search string returns all contacts
+        options.multiple=true;      // return multiple results
+        filter = ["displayName"];   // return contact.displayName field
+
+        navigator.contacts.find(filter, app.onFindSuccess, app.onFindError, options);
+    },
+    
+    onFindSuccess: function(contacts) {
+    	contacts[0].remove(app.onRemoveSuccess,app.onRemoveError);
+        /*for (var i=0; i<contacts.length; i++) {
+        	app.testZone.innerHTML += contacts[i].name.givenName + "<br />";
+        }*/
+    },
+
+    onFindError:function(contactError) {
+        alert('onError!');
+    },
+    
+    onSaveSuccess: function(contact) {
+        alert("Save Success");
+    },
+
+    onSaveError: function(contactError) {
+        alert("Error = " + contactError.code);
+    },
+
+    onRemoveSuccess: function(contacts) {
+        alert("Removal Success");
+    },
+
+    onRemoveError: function(contactError) {
+        alert("Error = " + contactError.code);
+    }
+};

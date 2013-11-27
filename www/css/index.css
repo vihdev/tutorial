@@ -1,0 +1,63 @@
+* {
+    -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
+}
+
+body {
+    -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
+    -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
+    -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
+    background-color:#191919;
+    font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
+    font-size:12px;
+    height:100%;
+    margin:0px;
+    padding:0px;
+    width:100%;
+    color:#FFFFFF; /*MAKE ORANGE*/
+    text-align: center;
+}
+
+/* Portrait layout (default) */
+.app {
+
+}
+
+.app .logo{
+    width: 80%;
+    height: auto;
+    margin: 30px 0 20px 0;
+}
+
+.app .test-zone{
+    border: 1px solid #999;
+    margin: 20px;
+    height: 560px;
+    font-size: 30px;
+    position:relative;
+    text-align: left;
+    overflow: auto;
+}
+
+/* Landscape layout (with min-width) */
+@media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
+    .app {
+        
+    }
+
+    .app .logo{
+        width: 70%;
+    }
+    .app .test-zone{
+        height: 300px;
+    }
+}
+
+h1 {
+    font-size:18px;
+    font-weight:normal;
+    margin:0px;
+    overflow:visible;
+    padding:0;
+    text-align:center;
+    text-transform:uppercase;
+}
